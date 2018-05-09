@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import POM.DemoQAPageFactory;
 import cucumber.api.java.en.Given;
@@ -98,7 +99,16 @@ public class DemoQARegistration extends HelperClass{
 
 	@Then("^user verify given Date of birth choosen or not$")
 	public void user_verify_given_Date_of_birth_choosen_or_not() throws Throwable {
-	    
+		DemoQAPageFactory pom=new DemoQAPageFactory();
+		Select date= new Select(pom.getDropDownDobDay());
+		String dateText = date.getFirstSelectedOption().getText();
+		Assert.assertEquals("Afghanistan", dateText);
+		Select month= new Select(pom.getDropDownDobDay());
+		String monthText = month.getFirstSelectedOption().getText();
+		Assert.assertEquals("Afghanistan", monthText);
+		Select year= new Select(pom.getDropDownDobYear());
+		String yearText = year.getFirstSelectedOption().getText();
+		Assert.assertEquals("Afghanistan", yearText);
 	}
 	
 
